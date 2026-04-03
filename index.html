@@ -999,15 +999,7 @@
     function showMapRoute(pickup, dropoff) {
       const mapDiv = document.getElementById('map');
       if (!map) {
-        map = new google.maps.Map(mapDiv, {
-          zoom: 12, center: { lat: 20.5937, lng: 78.9629 }, disableDefaultUI: true, styles: [
-            { elementType: 'geometry', stylers: [{ color: '#1C1C1C' }] },
-            { elementType: 'labels.text.fill', stylers: [{ color: '#999' }] },
-            { elementType: 'labels.text.stroke', stylers: [{ color: '#111' }] },
-            { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#333' }] },
-            { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0e1626' }] },
-          ]
-        });
+        map = new google.maps.Map(mapDiv, { zoom: 12, center: { lat: 20.5937, lng: 78.9629 }, disableDefaultUI: true });
         directionsRenderer = new google.maps.DirectionsRenderer({
           map,
           suppressMarkers: false,
