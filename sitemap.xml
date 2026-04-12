@@ -8,13 +8,13 @@
   </url>
   <!-- Ride Booking -->
   <url>
-    <loc>https://affitto.in/ride</loc>
+    <loc>https://affitto.in/#view-ride</loc>
     <lastmod>2026-04-12</lastmod>
     <priority>0.8</priority>
   </url>
   <!-- Vehicle Rent (Self Drive Bikes & Cars) -->
   <url>
-    <loc>https://affitto.in/rent</loc>
+    <loc>https://affitto.in/#view-self-ride</loc>
     <lastmod>2026-04-12</lastmod>
     <priority>0.7</priority>
   </url>
