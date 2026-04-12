@@ -4,9 +4,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Affitto Ride &amp; Rent — Book Rides &amp; Rent Vehicles</title>
+  <title>Bike Rental in Bhadrak | Car Rental in Bhadrak | Affitto Ride &amp; Rent</title>
   <meta name="description"
-    content="Affitto Ride & Rent: Your go-to transport app for booking point-to-point rides and renting 2-wheelers & 4-wheelers at affordable hourly rates." />
+    content="Affitto Ride & Rent — #1 bike rental in Bhadrak & car rental in Bhadrak. Self drive bike & car at cheapest rates in Charampa. Bike kiraya & car kiraya Bhadrak. Book affordable rides near you now!" />
+  <meta name="keywords"
+    content="Bike rental in Bhadrak, Car rental in Bhadrak, Self drive bike Bhadrak, Self drive car Bhadrak, Bike rent in Charampa, Car rent in Charampa, Bike rent near me Bhadrak, Car rent near me Bhadrak, Affordable bike rental in Bhadrak, Cheap car rent in Bhadrak, Affitto ride Bhadrak, Affitto rent Bhadrak, Bike kiraya Bhadrak, Car kiraya Bhadrak" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Affitto Ride & Rent" />
+  <link rel="canonical" href="https://affitto.in/" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bike & Car Rental in Bhadrak | Affitto Ride & Rent" />
+  <meta property="og:description" content="Self drive bikes & cars at affordable rates in Bhadrak & Charampa. Book your ride or rent a vehicle with Affitto today!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://affitto.in/" />
+  <meta property="og:image" content="https://affitto.in/images/affitto1.jpeg" />
+  <meta property="og:locale" content="en_IN" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bike & Car Rental in Bhadrak | Affitto Ride & Rent" />
+  <meta name="twitter:description" content="Cheapest self-drive bike & car rental in Bhadrak. Affitto — move smarter!" />
+  <!-- Geo tags for local SEO -->
+  <meta name="geo.region" content="IN-OR" />
+  <meta name="geo.placename" content="Bhadrak, Odisha" />
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Affitto Ride & Rent",
+    "description": "Affordable bike rental and car rental in Bhadrak, Charampa. Self drive bikes, self drive cars, and ride booking.",
+    "url": "https://affitto.in/",
+    "image": "https://affitto.in/images/affitto1.jpeg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bhadrak",
+      "addressRegion": "Odisha",
+      "addressCountry": "IN"
+    },
+    "areaServed": ["Bhadrak", "Charampa"],
+    "serviceType": ["Bike Rental", "Car Rental", "Self Drive Vehicles", "Ride Booking"]
+  }
+  </script>
   <link rel="icon" type="image/jpeg" href="images/affitto1.jpeg" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -59,6 +97,21 @@
             marquee: {
               '0%': { transform: 'translateX(0)' },
               '100%': { transform: 'translateX(-50%)' },
+            },
+            radar: {
+              '0%': { transform: 'scale(0.15)', opacity: '1' },
+              '80%': { opacity: '0.4' },
+              '100%': { transform: 'scale(1)', opacity: '0' },
+            },
+            radarSweep: {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' },
+            },
+            bounceIn: {
+              '0%': { opacity: '0', transform: 'scale(0.3)' },
+              '50%': { opacity: '1', transform: 'scale(1.05)' },
+              '70%': { transform: 'scale(0.9)' },
+              '100%': { transform: 'scale(1)' },
             }
           },
           animation: {
@@ -67,6 +120,9 @@
             'shimmer': 'shimmer 2s linear infinite',
             'pulse-slow': 'pulse 2.5s ease-in-out infinite',
             'marquee': 'marquee 30s linear infinite',
+            'radar': 'radar 2s ease-out infinite',
+            'radar-sweep': 'radarSweep 2s linear infinite',
+            'bounce-in': 'bounceIn 0.6s ease-out both',
           }
         }
       }
@@ -391,6 +447,113 @@
           <button onclick="backToRideForm()"
             class="w-full text-neutral-400 hover:text-white text-sm font-semibold py-2 transition-colors">← Back to
             edit</button>
+        </div>
+
+        <!-- ──── BOOKING FLOW: SEARCHING STATE ──── -->
+        <div id="booking-searching" class="hidden mt-3">
+          <div class="flex flex-col items-center justify-center py-12 space-y-6">
+            <!-- Radar Animation -->
+            <div class="relative w-40 h-40">
+              <div class="absolute inset-0 rounded-full border-2 border-brand-400/20"></div>
+              <div class="absolute inset-4 rounded-full border-2 border-brand-400/30"></div>
+              <div class="absolute inset-8 rounded-full border-2 border-brand-400/40"></div>
+              <div class="absolute inset-0 rounded-full border-2 border-brand-400/20 animate-radar"></div>
+              <div class="absolute inset-0 rounded-full border-2 border-brand-400/15 animate-radar" style="animation-delay: 0.6s;"></div>
+              <div class="absolute inset-0 rounded-full border-2 border-brand-400/10 animate-radar" style="animation-delay: 1.2s;"></div>
+              <!-- Sweep line -->
+              <div class="absolute inset-0 animate-radar-sweep" style="transform-origin: center center;">
+                <div class="absolute top-1/2 left-1/2 w-1/2 h-0.5 bg-gradient-to-r from-brand-400 to-transparent" style="transform-origin: left center;"></div>
+              </div>
+              <!-- Center dot -->
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-brand-400 shadow-lg shadow-brand-400/50 animate-pulse-slow"></div>
+            </div>
+            <div class="text-center space-y-2">
+              <h3 class="text-lg font-bold text-white">Searching for riders near you...</h3>
+              <p class="text-sm text-neutral-500">This usually takes a few seconds</p>
+            </div>
+            <!-- Ride OTP displayed here -->
+            <div id="ride-otp-display" class="hidden bg-surface-700 border border-brand-400/30 rounded-2xl px-6 py-4 text-center">
+              <p class="text-[11px] text-neutral-500 uppercase tracking-wider font-semibold mb-1">Your Ride OTP</p>
+              <p id="ride-otp-value" class="text-3xl font-extrabold text-brand-400 tracking-[0.3em]"></p>
+              <p class="text-[10px] text-neutral-600 mt-1">Share with your rider for verification</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ──── BOOKING FLOW: RIDER FOUND STATE ──── -->
+        <div id="booking-rider-found" class="hidden mt-3 space-y-4">
+          <!-- Rider Found Badge -->
+          <div class="text-center">
+            <div class="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-5 py-2">
+              <div class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse-slow"></div>
+              <span class="text-sm font-bold text-green-400">Rider Found!</span>
+            </div>
+          </div>
+
+          <!-- Rider Card -->
+          <div class="bg-surface-700/80 border border-surface-500/40 rounded-2xl p-5 space-y-4 animate-bounce-in">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-full bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center text-surface-900 text-xl font-extrabold shadow-lg shadow-brand-400/20">R</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-bold text-white">Rahul</h3>
+                  <div class="flex items-center gap-0.5 bg-brand-400/10 rounded-lg px-2 py-0.5">
+                    <svg class="w-3.5 h-3.5 text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <span class="text-xs font-bold text-brand-400">4.8</span>
+                  </div>
+                </div>
+                <p class="text-xs text-neutral-500 mt-0.5">Vehicle: <span class="text-neutral-300 font-semibold">OD-22-AB-1234</span></p>
+              </div>
+            </div>
+            <!-- Call Rider Button -->
+            <a href="tel:+919876543210"
+              class="flex items-center justify-center gap-2 w-full bg-yellow-400 hover:bg-yellow-300 text-surface-900 font-bold py-3 rounded-xl text-sm tracking-wide transition-all active:scale-[0.98] shadow-lg shadow-yellow-400/20">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Call Rider
+            </a>
+            <!-- OTP for rider found state -->
+            <div id="ride-otp-found" class="bg-surface-600/50 border border-brand-400/20 rounded-xl px-4 py-2.5 flex items-center justify-between">
+              <span class="text-xs text-neutral-500 uppercase tracking-wider font-semibold">Ride OTP</span>
+              <span id="ride-otp-found-value" class="text-lg font-extrabold text-brand-400 tracking-[0.2em]"></span>
+            </div>
+          </div>
+
+          <!-- Chat Interface -->
+          <div class="bg-surface-700/60 border border-surface-500/40 rounded-2xl overflow-hidden">
+            <div class="px-4 py-3 border-b border-surface-500/30 flex items-center gap-2">
+              <svg class="w-4 h-4 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider">Chat with Rider</span>
+            </div>
+            <!-- Messages area -->
+            <div id="chat-messages" class="px-4 py-3 space-y-2 max-h-36 overflow-y-auto" style="min-height: 100px;">
+              <div class="flex justify-start">
+                <div class="bg-surface-600 rounded-xl rounded-tl-sm px-3 py-2 max-w-[80%]">
+                  <p class="text-xs text-neutral-300">Hi! I'm on my way. Reaching in 5 mins.</p>
+                  <p class="text-[9px] text-neutral-600 text-right mt-0.5">Just now</p>
+                </div>
+              </div>
+            </div>
+            <!-- Chat input -->
+            <div class="px-3 py-2.5 border-t border-surface-500/30 flex items-center gap-2">
+              <input id="chat-input" type="text" placeholder="Type a message..."
+                class="input-focus flex-1 bg-surface-600 border border-surface-500/50 rounded-xl px-3 py-2 text-sm text-white placeholder:text-neutral-500 outline-none transition-all"
+                onkeydown="if(event.key==='Enter')sendChatMessage()" />
+              <button onclick="sendChatMessage()"
+                class="bg-brand-400 hover:bg-brand-300 text-surface-900 p-2 rounded-xl transition-all active:scale-90 flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Back to Home -->
+          <button onclick="resetBookingFlow()"
+            class="w-full text-neutral-400 hover:text-white text-sm font-semibold py-2 transition-colors">← Back to Home</button>
         </div>
 
         <!-- ──── FEEDBACK CAROUSEL (Ride View) ──── -->
@@ -831,6 +994,8 @@
     let selectedRatingSelf = 0;
     let map = null;
     let directionsRenderer = null;
+    let pickupMarker = null;
+    let dropMarker = null;
     let lastRouteData = { pickup: '', dropoff: '', distanceKm: 0, price: 0 };
 
     // ══════════════════════════════════════
@@ -999,11 +1164,22 @@
     function showMapRoute(pickup, dropoff) {
       const mapDiv = document.getElementById('map');
       if (!map) {
-        map = new google.maps.Map(mapDiv, { zoom: 12, center: { lat: 20.5937, lng: 78.9629 }, disableDefaultUI: true });
+        map = new google.maps.Map(mapDiv, {
+          zoom: 12,
+          center: { lat: 21.0545, lng: 86.4954 }, // Bhadrak center
+          disableDefaultUI: true,
+          styles: [
+            { elementType: 'geometry', stylers: [{ color: '#1d1d1d' }] },
+            { elementType: 'labels.text.stroke', stylers: [{ color: '#1d1d1d' }] },
+            { elementType: 'labels.text.fill', stylers: [{ color: '#757575' }] },
+            { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#333333' }] },
+            { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0e0e0e' }] },
+          ]
+        });
         directionsRenderer = new google.maps.DirectionsRenderer({
           map,
-          suppressMarkers: false,
-          polylineOptions: { strokeColor: '#FACC15', strokeWeight: 4 }
+          suppressMarkers: true, // We manage markers manually for draggability
+          polylineOptions: { strokeColor: '#FACC15', strokeWeight: 4, strokeOpacity: 0.8 }
         });
       }
       const directionsService = new google.maps.DirectionsService();
@@ -1020,8 +1196,110 @@
           document.getElementById('route-distance').textContent = leg.distance.text;
           document.getElementById('route-price').textContent = `₹${price}`;
           lastRouteData = { pickup, dropoff, distanceKm: distKm, price };
+
+          // Place draggable markers
+          placeDraggableMarkers(leg.start_location, leg.end_location);
         } else {
           showToast('Could not find route. Check locations.');
+        }
+      });
+    }
+
+    // ══════════════════════════════════════
+    //  DRAGGABLE MAP MARKERS + GEOCODER
+    // ══════════════════════════════════════
+    const geocoder = typeof google !== 'undefined' ? null : null; // lazy init
+    function getGeocoder() {
+      if (!window._geocoder && google?.maps) { window._geocoder = new google.maps.Geocoder(); }
+      return window._geocoder;
+    }
+
+    function placeDraggableMarkers(startLatLng, endLatLng) {
+      // Clear old markers
+      if (pickupMarker) pickupMarker.setMap(null);
+      if (dropMarker) dropMarker.setMap(null);
+
+      pickupMarker = new google.maps.Marker({
+        position: startLatLng,
+        map: map,
+        draggable: true,
+        label: { text: 'P', color: '#0D0D0D', fontWeight: 'bold' },
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 12,
+          fillColor: '#FACC15',
+          fillOpacity: 1,
+          strokeColor: '#CA8A04',
+          strokeWeight: 2,
+        },
+        title: 'Pickup — drag to change'
+      });
+
+      dropMarker = new google.maps.Marker({
+        position: endLatLng,
+        map: map,
+        draggable: true,
+        label: { text: 'D', color: '#ffffff', fontWeight: 'bold' },
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 12,
+          fillColor: '#EF4444',
+          fillOpacity: 1,
+          strokeColor: '#B91C1C',
+          strokeWeight: 2,
+        },
+        title: 'Drop-off — drag to change'
+      });
+
+      // Dragend listeners
+      pickupMarker.addListener('dragend', () => {
+        reverseGeocodeAndUpdate(pickupMarker.getPosition(), 'pickup');
+      });
+      dropMarker.addListener('dragend', () => {
+        reverseGeocodeAndUpdate(dropMarker.getPosition(), 'drop');
+      });
+    }
+
+    function reverseGeocodeAndUpdate(latLng, fieldId) {
+      const gc = getGeocoder();
+      if (!gc) return;
+      gc.geocode({ location: latLng }, (results, status) => {
+        if (status === 'OK' && results[0]) {
+          const address = results[0].formatted_address;
+          document.getElementById(fieldId).value = address;
+          // Update lastRouteData and recalculate
+          if (fieldId === 'pickup') {
+            lastRouteData.pickup = address;
+          } else {
+            lastRouteData.dropoff = address;
+          }
+          recalculateRoute();
+        } else {
+          showToast('Could not resolve address. Try again.');
+        }
+      });
+    }
+
+    function recalculateRoute() {
+      const pickup = document.getElementById('pickup').value.trim();
+      const drop = document.getElementById('drop').value.trim();
+      if (!pickup || !drop) return;
+      const directionsService = new google.maps.DirectionsService();
+      directionsService.route({
+        origin: pickup,
+        destination: drop,
+        travelMode: google.maps.TravelMode.DRIVING
+      }, (result, status) => {
+        if (status === 'OK') {
+          directionsRenderer.setDirections(result);
+          const leg = result.routes[0].legs[0];
+          const distKm = parseFloat((leg.distance.value / 1000).toFixed(1));
+          const price = Math.round(distKm * PRICE_PER_KM);
+          document.getElementById('route-distance').textContent = leg.distance.text;
+          document.getElementById('route-price').textContent = `₹${price}`;
+          lastRouteData = { pickup, dropoff: drop, distanceKm: distKm, price };
+          // Update marker positions to match new route
+          placeDraggableMarkers(leg.start_location, leg.end_location);
         }
       });
     }
@@ -1399,9 +1677,32 @@
       document.getElementById('ride-form-section').classList.remove('hidden');
     }
 
+    // ══════════════════════════════════════
+    //  STATIC RIDE OTP (deterministic from UID)
+    // ══════════════════════════════════════
+    function generateStaticOTP(uid) {
+      // Extract numeric digits from uid, take last 4
+      const digits = uid.replace(/[^0-9]/g, '');
+      if (digits.length >= 4) {
+        return digits.slice(-4);
+      }
+      // Fallback: simple hash from uid characters
+      let hash = 0;
+      for (let i = 0; i < uid.length; i++) {
+        hash = ((hash << 5) - hash) + uid.charCodeAt(i);
+        hash = hash & 0xFFFF; // 16-bit
+      }
+      return String(Math.abs(hash) % 10000).padStart(4, '0');
+    }
+
+    // ══════════════════════════════════════
+    //  CONFIRM BOOKING → BOOKING FLOW
+    // ══════════════════════════════════════
     async function confirmBooking() {
       if (!currentUser) { showToast('Please sign in first'); return; }
       if (!lastRouteData.pickup) { showToast('No route to confirm'); return; }
+
+      // Save booking to backend
       try {
         const res = await fetch(`${API_BASE}/api/rides`, {
           method: 'POST',
@@ -1414,15 +1715,104 @@
             price: lastRouteData.price
           })
         });
-        if (res.ok) {
-          showToast('Ride confirmed! 🎉');
-          // Reset
-          document.getElementById('pickup').value = '';
-          document.getElementById('drop').value = '';
-          backToRideForm();
-          lastRouteData = { pickup: '', dropoff: '', distanceKm: 0, price: 0 };
-        } else { showToast('Booking failed. Try again.'); }
-      } catch (e) { showToast('Network error. Try again.'); }
+        if (!res.ok) {
+          showToast('Booking failed. Try again.');
+          return;
+        }
+      } catch (e) {
+        showToast('Network error. Try again.');
+        return;
+      }
+
+      // Generate & show OTP
+      const otp = generateStaticOTP(currentUser.uid);
+
+      // STATE 1: Show searching screen
+      document.getElementById('ride-map-section').classList.add('hidden');
+      document.getElementById('booking-searching').classList.remove('hidden');
+      document.getElementById('ride-otp-display').classList.remove('hidden');
+      document.getElementById('ride-otp-value').textContent = otp;
+      document.getElementById('ride-otp-found-value').textContent = otp;
+
+      showToast('Ride confirmed! Searching for rider... 🎉');
+
+      // STATE 2: After 5 seconds, mock rider acceptance
+      setTimeout(() => {
+        document.getElementById('booking-searching').classList.add('hidden');
+        document.getElementById('booking-rider-found').classList.remove('hidden');
+        showToast('Rider accepted your ride! 🏍️');
+      }, 5000);
+    }
+
+    function resetBookingFlow() {
+      document.getElementById('booking-searching').classList.add('hidden');
+      document.getElementById('booking-rider-found').classList.add('hidden');
+      document.getElementById('ride-map-section').classList.add('hidden');
+      document.getElementById('ride-form-section').classList.remove('hidden');
+      document.getElementById('pickup').value = '';
+      document.getElementById('drop').value = '';
+      lastRouteData = { pickup: '', dropoff: '', distanceKm: 0, price: 0 };
+      // Clear chat
+      const chatMsgs = document.getElementById('chat-messages');
+      chatMsgs.innerHTML = `
+        <div class="flex justify-start">
+          <div class="bg-surface-600 rounded-xl rounded-tl-sm px-3 py-2 max-w-[80%]">
+            <p class="text-xs text-neutral-300">Hi! I'm on my way. Reaching in 5 mins.</p>
+            <p class="text-[9px] text-neutral-600 text-right mt-0.5">Just now</p>
+          </div>
+        </div>`;
+    }
+
+    // ══════════════════════════════════════
+    //  CHAT FUNCTIONALITY
+    // ══════════════════════════════════════
+    function sendChatMessage() {
+      const input = document.getElementById('chat-input');
+      const msg = input.value.trim();
+      if (!msg) return;
+      const chatMsgs = document.getElementById('chat-messages');
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+
+      // User message (right-aligned)
+      const userBubble = document.createElement('div');
+      userBubble.className = 'flex justify-end animate-fade-up';
+      userBubble.innerHTML = `
+        <div class="bg-brand-400/20 border border-brand-400/30 rounded-xl rounded-tr-sm px-3 py-2 max-w-[80%]">
+          <p class="text-xs text-white">${escapeHtml(msg)}</p>
+          <p class="text-[9px] text-neutral-600 text-right mt-0.5">${timeStr}</p>
+        </div>`;
+      chatMsgs.appendChild(userBubble);
+      input.value = '';
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+
+      // Mock rider reply after 1.5s
+      setTimeout(() => {
+        const replies = [
+          'Okay, noted! 👍',
+          'Almost there, please wait.',
+          'I can see your location.',
+          'On my way! 🏍️',
+          'Will reach in 2 minutes.',
+          'Please be ready at the pickup point.'
+        ];
+        const reply = replies[Math.floor(Math.random() * replies.length)];
+        const riderBubble = document.createElement('div');
+        riderBubble.className = 'flex justify-start animate-fade-up';
+        riderBubble.innerHTML = `
+          <div class="bg-surface-600 rounded-xl rounded-tl-sm px-3 py-2 max-w-[80%]">
+            <p class="text-xs text-neutral-300">${reply}</p>
+            <p class="text-[9px] text-neutral-600 text-right mt-0.5">${timeStr}</p>
+          </div>`;
+        chatMsgs.appendChild(riderBubble);
+        chatMsgs.scrollTop = chatMsgs.scrollHeight;
+      }, 1500);
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
     }
 
     function rentVehicle(name) {
