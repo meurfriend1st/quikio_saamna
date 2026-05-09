@@ -424,8 +424,8 @@
         </div><!-- /ride-form-section -->
 
         <!-- ──── RIDE  SECTION (shown after booking) ──── -->
-        <div id="ride--section" class="hidden mt-3 space-y-4">
-          <div id="" class="w-full rounded-2xl overflow-hidden bg-surface-700 border border-surface-500/40"
+        <div id="ride-map-section" class="hidden mt-3 space-y-4">
+          <div id="map" class="w-full rounded-2xl overflow-hidden bg-surface-700 border border-surface-500/40"
             style="height:240px;"></div>
           <div class="bg-surface-700/60 border border-surface-500/40 rounded-2xl p-4 space-y-2">
             <div class="flex items-center justify-between">
@@ -1001,7 +1001,10 @@
     // ══════════════════════════════════════
     //  FIREBASE AUTH
     // ══════════════════════════════════════
+    let isSigningIn = false;
     async function signInWithGoogle() {
+      if (isSigningIn) return;
+      isSigningIn = true;
       try {
         const result = await auth.signInWithPopup(googleProvider);
         const user = result.user;
@@ -1019,8 +1022,14 @@
         });
         // Check if user has phone number
         const profileRes = await fetch(`${API_BASE}/api/users/${user.uid}`);
-        const profile = await profileRes.json();
-        if (!profile.phone) {
+        if (profileRes.ok) {
+          const profile = await profileRes.json();
+          if (!profile.phone) {
+            document.getElementById('phone-modal').classList.remove('hidden');
+          }
+        } else {
+          // If the profile fetch fails (e.g., 404 because backend is slow to write),
+          // we can default to showing the phone modal since it's a new sign-up.
           document.getElementById('phone-modal').classList.remove('hidden');
         }
         showToast('Signed in successfully!');
@@ -1029,6 +1038,8 @@
           showToast('Sign-in failed. Try again.');
           console.error(err);
         }
+      } finally {
+        isSigningIn = false;
       }
     }
 
